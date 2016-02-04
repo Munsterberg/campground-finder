@@ -1,0 +1,27 @@
+<% include partials/header %>
+
+<div class="container">
+
+  
+  
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Create a new Campground</h1>
+      <form action="/campgrounds" method="POST">
+        <div class="form-group">
+          <input type="text" class="form-control" name="name" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="image" placeholder="Image Url">
+        </div>
+        <div class="form-group">
+          <textarea name="description" class="form-control" rows="4" placeholder="Description"></textarea>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  </div>
+
+<% include partials/footer %>
