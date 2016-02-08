@@ -1,22 +1,18 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var seedDB = require('./seeds');
+
+seedDB();
 
 var app = express();
+
+var Campground = require('./models/Campground');
 
 mongoose.connect('mongodb://localhost:27017/yelp_camp');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
-
-// Temp Schema
-var campgroundSchema = new mongoose.Schema({
-  name: String,
-  image: String,
-  description: String
-});
-
-var Campground = mongoose.model('Campground', campgroundSchema);
 
 app.get('/', function(req, res) {
   res.render('landing');
