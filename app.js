@@ -3,8 +3,6 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var seedDB = require('./seeds');
 
-seedDB();
-
 var app = express();
 
 var Campground = require('./models/Campground');
@@ -13,6 +11,8 @@ mongoose.connect('mongodb://localhost:27017/yelp_camp');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
+
+seedDB();
 
 app.get('/', function(req, res) {
   res.render('landing');
@@ -51,7 +51,7 @@ app.get('/campgrounds/new', function(req, res) {
 });
 
 app.get('/campgrounds/:id', function(req, res) {
-  Campground.findById(req.params.id, function(err, foundCampground) {
+  Campground.findById(req.params.id).populate('comments').exec(function(err, foundCampground) {
     if(err) {
       console.log(err);
     } else {
