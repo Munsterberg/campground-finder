@@ -1,0 +1,15 @@
+.thumbnail img {
+  width: 100%;
+}
+
+.thumbnail {
+  padding: 0;
+}
+
+.campground {
+  text-align: center;
+}
+
+.thumbnail .caption-full {
+  padding: 10px;
+}
