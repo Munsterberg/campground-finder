@@ -27,8 +27,16 @@ router.post('/', isLoggedIn, function(req, res) {
         if(err) {
           console.log(err);
         } else {
+          // add username and id to comment
+          comment.author.id = req.user._id;
+          comment.author.username = req.user.username;
+          // save comment
+          comment.save();
+          // push comment to comments array
           campground.comments.push(comment);
+          // save campground
           campground.save();
+          console.log('HERE IS THE INFO:' + comment);
           res.redirect('/campgrounds/' + campground._id);
         }
       });

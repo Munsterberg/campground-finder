@@ -9,7 +9,7 @@ var commentRoutes = require('./routes/comments');
 var campgroundRoutes = require('./routes/campgrounds');
 var indexRoutes = require('./routes/index');
 
-var seedDB = require('./seeds');
+// var seedDB = require('./seeds');
 
 var app = express();
 
@@ -47,7 +47,7 @@ app.use('/campgrounds', campgroundRoutes);
 app.use('/campgrounds/:id/comments', commentRoutes);
 
 
-seedDB();
+// seedDB();
 
 
 app.listen(3000, function() {
