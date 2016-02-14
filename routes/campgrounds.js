@@ -15,18 +15,23 @@ router.get('/', function(req, res) {
   });
 });
 
-// POST New Campground
+// Creat POST New Campground
 router.post('/', isLoggedIn, function(req, res) {
   var newCampground = {
     name: req.body.name,
     image: req.body.image,
-    description: req.body.description
+    description: req.body.description,
+    author: {
+      id: req.user._id,
+      username: req.user.username 
+    }
   }
   
   Campground.create(newCampground, function(err, newCampground) {
     if(err) {
       console.log(err);
     } else {
+      console.log(newCampground);
       res.redirect('/campgrounds');
     }
   });
